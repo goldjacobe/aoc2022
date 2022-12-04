@@ -31,3 +31,17 @@ fn map_right_char(c: char) -> i32 {
         _ => panic!("oopsie, [{}]", c),
     }
 }
+
+pub fn get_total_score_2() -> i32 {
+    return fs::read_to_string("input/2.txt")
+        .expect("Failed to read file")
+        .split('\n')
+        .filter(|line| line.len() > 2)
+        .map(|line| {
+            let abc = map_left_char(line.chars().nth(0).expect("should have a char"));
+            let xyz = map_right_char(line.chars().nth(2).expect("should have a char"));
+            let throw = (xyz + 2 + abc) % 3;
+            return throw + 1 + xyz * 3;
+        })
+        .sum();
+}
