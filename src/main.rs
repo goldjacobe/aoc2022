@@ -11,4 +11,5 @@ fn main() {
     println!("{}", day3::get_sum_of_priorities());
     println!("{}", day3::get_sum_of_badge_priorities());
     println!("{}", day4::get_num_pairs_with_full_contain());
+    println!("{}", day4::get_num_pairs_with_overlap());
 }
