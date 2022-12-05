@@ -8,8 +8,7 @@ pub fn get_sum_of_priorities() -> u32 {
         .filter(|line| line.len() > 0)
         .map(|line| {
             let comp_size = line.len() / 2;
-            let (first, second) = line
-                .chars()
+            line.chars()
                 .enumerate()
                 .find(|(i, _)| *i == comp_size)
                 .map(|(i, _)| {
@@ -18,12 +17,15 @@ pub fn get_sum_of_priorities() -> u32 {
                         line.chars().skip(i).collect::<Vec<char>>(),
                     )
                 })
-                .expect("Failed to split");
-            let &item = first
-                .iter()
-                .find(|&c| second.iter().any(|d| d == c))
-                .expect(format!("failed: {}", line).as_str());
-            return get_priority(item);
+                .expect("Failed to split")
+        })
+        .map(|(first, second)| {
+            get_priority(
+                *first
+                    .iter()
+                    .find(|&c| second.iter().any(|d| d == c))
+                    .expect(format!("failed: {0:?}, {1:?}", first, second).as_str()),
+            )
         })
         .sum();
 }
@@ -43,8 +45,8 @@ pub fn get_sum_of_badge_priorities() -> u32 {
         .filter(|line| line.len() > 0)
         .collect::<Vec<&str>>()
         .chunks(3)
-        .map(|chunk| {
-            let (first, second, third) = (chunk[0], chunk[1], chunk[2]);
+        .map(|chunk| (chunk[0], chunk[1], chunk[2]))
+        .map(|(first, second, third)| {
             for c in first.chars() {
                 if second.contains(c) && third.contains(c) {
                     return get_priority(c);
