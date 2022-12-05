@@ -1,3 +1,4 @@
+use core::panic;
 use std::fs;
 
 pub fn get_sum_of_priorities() -> u32 {
@@ -33,4 +34,23 @@ fn get_priority(item: char) -> u32 {
         c if c.is_ascii_uppercase() => item as u32 - 'A' as u32 + 27,
         _ => panic!(),
     }
+}
+
+pub fn get_sum_of_badge_priorities() -> u32 {
+    return fs::read_to_string("input/3.txt")
+        .expect("Failed to read file")
+        .split('\n')
+        .filter(|line| line.len() > 0)
+        .collect::<Vec<&str>>()
+        .chunks(3)
+        .map(|chunk| {
+            let (first, second, third) = (chunk[0], chunk[1], chunk[2]);
+            for c in first.chars() {
+                if second.contains(c) && third.contains(c) {
+                    return get_priority(c);
+                }
+            }
+            panic!("No match!");
+        })
+        .sum();
 }

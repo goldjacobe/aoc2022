@@ -8,4 +8,5 @@ fn main() {
     println!("{}", day2::get_total_score());
     println!("{}", day2::get_total_score_2());
     println!("{}", day3::get_sum_of_priorities());
+    println!("{}", day3::get_sum_of_badge_priorities());
 }
