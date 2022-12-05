@@ -6,11 +6,12 @@ pub fn get_total_score() -> i32 {
         .split('\n')
         .filter(|line| line.len() > 2)
         .map(|line| {
-            let abc = map_left_char(line.chars().nth(0).expect("should have a char"));
-            let xyz = map_right_char(line.chars().nth(2).expect("should have a char"));
-            let result = (xyz - abc + 4) % 3;
-            return result * 3 + xyz + 1;
+            (
+                map_left_char(line.chars().nth(0).expect("should have a char")),
+                map_right_char(line.chars().nth(2).expect("should have a char")),
+            )
         })
+        .map(|(abc, xyz)| (xyz - abc + 4) % 3 * 3 + xyz + 1)
         .sum();
 }
 
@@ -38,10 +39,11 @@ pub fn get_total_score_2() -> i32 {
         .split('\n')
         .filter(|line| line.len() > 2)
         .map(|line| {
-            let abc = map_left_char(line.chars().nth(0).expect("should have a char"));
-            let xyz = map_right_char(line.chars().nth(2).expect("should have a char"));
-            let throw = (xyz + 2 + abc) % 3;
-            return throw + 1 + xyz * 3;
+            (
+                map_left_char(line.chars().nth(0).expect("should have a char")),
+                map_right_char(line.chars().nth(2).expect("should have a char")),
+            )
         })
+        .map(|(abc, xyz)| (xyz + 2 + abc) % 3 + 1 + xyz * 3)
         .sum();
 }
