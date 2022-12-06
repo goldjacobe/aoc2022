@@ -2,6 +2,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 fn main() {
     println!("{}", day1::get_max_calories());
@@ -12,4 +13,5 @@ fn main() {
     println!("{}", day3::get_sum_of_badge_priorities());
     println!("{}", day4::get_num_pairs_with_full_contain());
     println!("{}", day4::get_num_pairs_with_overlap());
+    println!("{}", day5::get_tops_of_stacks());
 }
