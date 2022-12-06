@@ -17,4 +17,5 @@ fn main() {
     println!("{}", day5::get_tops_of_stacks());
     println!("{}", day5::get_tops_of_stacks_2());
     println!("{}", day6::get_first_pos());
+    println!("{}", day6::get_first_pos_2());
 }

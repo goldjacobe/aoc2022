@@ -1,4 +1,4 @@
-use std::fs;
+use std::{collections::HashSet, fs};
 
 pub fn get_first_pos() -> usize {
     let binding = fs::read_to_string("input/6.txt").expect("Failed to read file");
@@ -15,6 +15,17 @@ pub fn get_first_pos() -> usize {
         two = one;
         one = zero;
         zero = input.next().unwrap();
+        result = result + 1;
+    }
+    return result;
+}
+
+pub fn get_first_pos_2() -> usize {
+    let input = fs::read_to_string("input/6.txt").expect("Failed to read file");
+
+    let mut result: usize = 14;
+
+    while HashSet::<char>::from_iter(input.get(result - 14..result).unwrap().chars()).len() < 14 {
         result = result + 1;
     }
     return result;
