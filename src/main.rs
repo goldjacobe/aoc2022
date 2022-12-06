@@ -3,6 +3,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 
 fn main() {
     println!("{}", day1::get_max_calories());
@@ -15,4 +16,5 @@ fn main() {
     println!("{}", day4::get_num_pairs_with_overlap());
     println!("{}", day5::get_tops_of_stacks());
     println!("{}", day5::get_tops_of_stacks_2());
+    println!("{}", day6::get_first_pos());
 }
