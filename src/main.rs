@@ -14,4 +14,5 @@ fn main() {
     println!("{}", day4::get_num_pairs_with_full_contain());
     println!("{}", day4::get_num_pairs_with_overlap());
     println!("{}", day5::get_tops_of_stacks());
+    println!("{}", day5::get_tops_of_stacks_2());
 }
