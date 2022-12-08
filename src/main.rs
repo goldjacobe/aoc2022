@@ -4,6 +4,7 @@ mod day3;
 mod day4;
 mod day5;
 mod day6;
+mod day7;
 
 fn main() {
     println!("{}", day1::get_max_calories());
@@ -18,4 +19,5 @@ fn main() {
     println!("{}", day5::get_tops_of_stacks_2());
     println!("{}", day6::get_first_pos());
     println!("{}", day6::get_first_pos_2());
+    println!("{}", day7::get_sum_of_sizes());
 }
