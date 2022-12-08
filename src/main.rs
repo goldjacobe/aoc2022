@@ -5,6 +5,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 
 fn main() {
     println!("{}", day1::get_max_calories());
@@ -21,4 +22,6 @@ fn main() {
     println!("{}", day6::get_first_pos_2());
     println!("{}", day7::get_sum_of_sizes());
     println!("{}", day7::get_smallest_to_delete());
+    println!("{}", day8::get_num_visible());
+    println!("{}", day8::get_max_score());
 }
