@@ -20,4 +20,5 @@ fn main() {
     println!("{}", day6::get_first_pos());
     println!("{}", day6::get_first_pos_2());
     println!("{}", day7::get_sum_of_sizes());
+    println!("{}", day7::get_smallest_to_delete());
 }
