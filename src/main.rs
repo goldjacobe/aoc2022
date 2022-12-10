@@ -26,4 +26,5 @@ fn main() {
     println!("{}", day8::get_num_visible());
     println!("{}", day8::get_max_score());
     println!("{}", day9::get_num_positions());
+    println!("{}", day9::get_num_positions_2());
 }
