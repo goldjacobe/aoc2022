@@ -1,11 +1,10 @@
 use std::{collections::HashSet, fs};
 
 pub fn get_num_positions() -> usize {
-    let input = fs::read_to_string("input/9.txt").expect("Failed to read file");
-    let lines = input.split('\n');
-
     let (mut head_x, mut head_y, mut tail_x, mut tail_y) = (0, 0, 0, 0);
-    let positions = lines
+    return fs::read_to_string("input/9.txt")
+        .unwrap()
+        .split('\n')
         .flat_map(|line| {
             let split_line: Vec<&str> = line.split(" ").collect();
             let direction = match *split_line.get(0).unwrap() {
@@ -15,9 +14,8 @@ pub fn get_num_positions() -> usize {
                 "R" => (1, 0),
                 _ => panic!(),
             };
-            let steps = split_line.get(1).unwrap().parse::<i32>().unwrap();
             let mut positions = Vec::<(i32, i32)>::new();
-            for _ in 0..steps {
+            for _ in 0..split_line.get(1).unwrap().parse::<i32>().unwrap() {
                 head_x += direction.0;
                 head_y += direction.1;
                 let (dx, dy) = (head_x - tail_x, head_y - tail_y);
@@ -53,18 +51,16 @@ pub fn get_num_positions() -> usize {
             }
             return positions;
         })
-        .collect::<HashSet<(i32, i32)>>();
-
-    return positions.len();
+        .collect::<HashSet<(i32, i32)>>()
+        .len();
 }
 
 pub fn get_num_positions_2() -> usize {
-    let input = fs::read_to_string("input/9.txt").expect("Failed to read file");
-    let lines = input.split('\n');
-
     let mut knots = [(0, 0); 10];
 
-    let positions = lines
+    return fs::read_to_string("input/9.txt")
+        .unwrap()
+        .split('\n')
         .flat_map(|line| {
             let split_line: Vec<&str> = line.split(" ").collect();
             let direction = match *split_line.get(0).unwrap() {
@@ -74,9 +70,8 @@ pub fn get_num_positions_2() -> usize {
                 "R" => (1, 0),
                 _ => panic!(),
             };
-            let steps = split_line.get(1).unwrap().parse::<i32>().unwrap();
             let mut positions = Vec::<(i32, i32)>::new();
-            for _ in 0..steps {
+            for _ in 0..split_line.get(1).unwrap().parse::<i32>().unwrap() {
                 let head = knots.get_mut(0).unwrap();
                 head.0 += direction.0;
                 head.1 += direction.1;
@@ -115,12 +110,10 @@ pub fn get_num_positions_2() -> usize {
                         },
                     );
                 }
-                let tail = knots.get(9).unwrap();
-                positions.push(tail.clone())
+                positions.push(knots.get(9).unwrap().clone())
             }
             return positions;
         })
-        .collect::<HashSet<(i32, i32)>>();
-
-    return positions.len();
+        .collect::<HashSet<(i32, i32)>>()
+        .len();
 }
