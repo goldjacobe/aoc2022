@@ -1,6 +1,7 @@
 mod day1;
 mod day10;
 mod day11;
+mod day12;
 mod day2;
 mod day3;
 mod day4;
@@ -33,4 +34,5 @@ fn main() {
     println!("{}", day10::render_crt());
     println!("{}", day11::get_monkey_business());
     println!("{}", day11::get_monkey_business_2());
+    println!("{}", day12::get_shortest_path_length());
 }
